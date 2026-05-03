@@ -103,22 +103,24 @@ function EntrepotChine() {
     });
   }
 
+  const figaroAddress = '收件人 (Destinataire) : 费加罗SN\n电话 (Tél.) : 13650752599 / 19128924682\n地址 : 广东省佛山市南海区里水镇海南州工业区44号费加罗仓储\n(Figaro Warehouse, No.44 Hainan Industrial Zone, Lishui Town, Nanhai District, Foshan, Guangdong, China)';
+
   const addresses = [
     {
-      key: 'foshan',
-      partner: 'Foshan Logistics',
+      key: 'figaro-sea',
+      partner: 'Guangzhou Figaro Supply Chain Co., Ltd. 广州市费加罗物流供应链有限公司',
       service: '🚢 Maritime LCL',
       code: 'DKR26072 +Sea',
-      address: 'Foshan Logistics Center, Nanhai District, Foshan, Guangdong, China 528200',
+      address: figaroAddress,
       contact: 'Contact via BF2B TRADING',
       note: 'Pour vos expéditions maritimes. Départ tous les 2 jours.',
     },
     {
-      key: 'holly',
-      partner: 'Entrepôt BF2B Aérien',
+      key: 'figaro-air',
+      partner: 'Guangzhou Figaro Supply Chain Co., Ltd. 广州市费加罗物流供应链有限公司',
       service: '✈️ Fret Aérien',
       code: 'DKR26072 +Air',
-      address: 'Entrepôt BF2B — Guangzhou Baiyun District, Guangdong, China 510000',
+      address: figaroAddress,
       contact: 'Contact via BF2B TRADING',
       note: 'Pour vos expéditions aériennes. Départ chaque mercredi.',
     },
@@ -148,7 +150,7 @@ function EntrepotChine() {
               <div className="p-6 space-y-4">
                 <div>
                   <div className="text-[#666] text-[10px] font-bold tracking-widest uppercase mb-2">Adresse entrepôt</div>
-                  <div className="bg-[#f8f6f0] rounded-xl px-4 py-3 font-mono text-sm text-[#0A1F44] leading-relaxed">{addr.address}</div>
+                  <div className="bg-[#f8f6f0] rounded-xl px-4 py-3 font-mono text-sm text-[#0A1F44] leading-relaxed whitespace-pre-line">{addr.address}</div>
                   <button onClick={() => copy(addr.address, addr.key)}
                     className={`mt-2 flex items-center gap-1.5 text-xs font-bold transition-colors ${copied === addr.key ? 'text-[#16A34A]' : 'text-[#666] hover:text-[#0A1F44]'}`}>
                     {copied === addr.key ? '✓ Copié !' : '📋 Copier l\'adresse'}
@@ -499,7 +501,7 @@ function LegalModals() {
               <p><strong>WhatsApp :</strong> +221 75 202 65 77</p>
               <p><strong>Activité :</strong> Transitaire / Freight Forwarder Chine → Sénégal</p>
               <p><strong>Services :</strong> Fret aérien, fret maritime LCL, conteneurs FCL, sourcing Chine, dropshipping.</p>
-              <p><strong>Partenaires :</strong> Entrepôt partenaire aérien CN, Foshan Logistics (maritime LCL).</p>
+              <p><strong>Partenaires :</strong> Guangzhou Figaro Supply Chain Co., Ltd. (广州市费加罗物流供应链有限公司) — entrepôt Foshan, fret aérien & maritime LCL.</p>
               <p><strong>Hébergement :</strong> Vercel Inc., San Francisco, CA, États-Unis.</p>
               <hr/>
               <p className="text-xs text-[#666]">BF2B TRADING SUARL est une société à responsabilité limitée unipersonnelle de droit sénégalais, immatriculée au Registre du Commerce et du Crédit Mobilier de Mbour sous le numéro SN.MBR.2024.A.1532. NINEA : 011251965.</p>
