@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BF2B TRADING TRANS — Transitaire Chine → Sénégal | Fret Aérien & Maritime</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <meta name="description" content="BF2B TRADING SUARL — Transitaire Chine→Sénégal. Fret aérien (10 jours, 9 800 FCFA/kg) et maritime LCL (70-80 jours, 250 000 FCFA/CBM). Dédouanement inclus. Mbour, Sénégal. NINEA 011251965." />
+  <meta name="keywords" content="transitaire Sénégal, fret Chine Sénégal, importation Chine, dédouanement Mbour, Alibaba Sénégal, fret aérien, fret maritime LCL, BF2B Trading" />
+  <meta name="author" content="BF2B TRADING SUARL" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.bf2btradingtrans.com/" />
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_SN" />
+  <meta property="og:url" content="https://www.bf2btradingtrans.com/" />
+  <meta property="og:title" content="BF2B TRADING TRANS — Transitaire Chine → Sénégal" />
+  <meta property="og:description" content="Fret aérien 10 jours • Maritime LCL 70-80 jours • Dédouanement inclus. Importez de Chine en toute sérénité." />
+  <meta property="og:image" content="https://www.bf2btradingtrans.com/logo.png" />
+  <meta property="og:site_name" content="BF2B TRADING TRANS" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BF2B TRADING TRANS — Transitaire Chine → Sénégal" />
+  <meta name="twitter:description" content="Fret aérien 10 jours • Maritime LCL 70-80 jours • Dédouanement inclus." />
+  <meta name="twitter:image" content="https://www.bf2btradingtrans.com/logo.png" />
+
+  <!-- Theme color (mobile browsers) -->
+  <meta name="theme-color" content="#0A1F44" />
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BF2B TRADING SUARL",
+    "alternateName": "BF2BTRADING_TRANS",
+    "description": "Transitaire Chine-Sénégal. Fret aérien 10 jours, maritime LCL 70-80 jours. Dédouanement inclus. Mbour Sénégal.",
+    "url": "https://www.bf2btradingtrans.com",
+    "telephone": "+221752026577",
+    "email": "bf2btrading@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Mbour", "addressCountry": "SN" },
+    "taxID": "011251965",
+    "priceRange": "FCFA",
+    "openingHours": ["Mo-Fr 08:00-20:00", "Sa 09:00-18:00"]
+  }
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0A1F44', 800: '#152A5C', 700: '#1E3A6F' },
+            gold: { 400: '#F4C430', 600: '#D4A017', 700: '#B8860B', 900: '#8B6914' },
+            cream: '#F8F6F0',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- React + Babel (versions production minifiées pour performance) -->
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+  <style>
+    /* ── Global reset ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "DM Sans", system-ui, sans-serif; background: #0A1F44; overflow-x: hidden; }
+
+    /* ── Custom scrollbar ───────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A1F44; }
+    ::-webkit-scrollbar-thumb { background: #F4C430; border-radius: 3px; }
+
+    /* ── Dot pattern background ─────────────────────── */
+    .dots-pattern {
+      background-image: radial-gradient(circle, rgba(244,196,48,0.35) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── Float animation ────────────────────────────── */
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .float-anim { animation: floatAnim 4s ease-in-out infinite; }
+
+    /* ── Marquee ────────────────────────────────────── */
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      animation: marqueeScroll 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ── Scroll fade-up animations ──────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.10s; }
+    .delay-2 { transition-delay: 0.20s; }
+    .delay-3 { transition-delay: 0.30s; }
+    .delay-4 { transition-delay: 0.40s; }
+    .delay-5 { transition-delay: 0.50s; }
+
+    /* ── Gold glow for code ─────────────────────────── */
+    .glow-gold {
+      text-shadow:
+        0 0 20px rgba(244,196,48,0.5),
+        0 0 40px rgba(244,196,48,0.25),
+        0 0 80px rgba(244,196,48,0.1);
+    }
+
+    /* ── Route path animation ───────────────────────── */
+    .route-path {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: drawRoute 4s ease forwards 0.8s;
+    }
+    @keyframes drawRoute {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* ── Plane along route ──────────────────────────── */
+    .plane-anim {
+      animation: movePlane 6s ease-in-out infinite 4s;
+    }
+    @keyframes movePlane {
+      0%, 100% { transform: translate(0, 0); }
+      50%  { transform: translate(-60px, -20px); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     Component files (loaded in dependency order)
+═══════════════════════════════════════════════════════ -->
+<script type="text/babel" src="bf2b-layout.jsx"></script>
+<script type="text/babel" src="bf2b-hero.jsx"></script>
+<script type="text/babel" src="bf2b-services.jsx"></script>
+<script type="text/babel" src="bf2b-sections.jsx"></script>
+<script type="text/babel" src="bf2b-bottom.jsx"></script>
+<script type="text/babel" src="bf2b-extras.jsx"></script>
+<script type="text/babel" src="bf2b-ddp.jsx"></script>
+<script type="text/babel" src="bf2b-blog.jsx"></script>
+<script type="text/babel" src="bf2b-additions.jsx"></script>
+<script type="text/babel" src="bf2b-final.jsx"></script>
+<script type="text/babel" src="bf2b-whatsapp.jsx"></script>
+
+<!-- ═══════════════════════════════════════════════════════
+     Main App
+═══════════════════════════════════════════════════════ -->
+<script type="text/babel">
+function App() {
+  React.useEffect(() => {
+    const els = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach(el => observer.observe(el));
+    setTimeout(() => {
+      document.querySelectorAll('.fade-up').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    }, 100);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Header />
+      <main>
+        <HeroSection />
+        <LiveCounter />
+        <MarqueeBar />
+        <NextDepartureCountdown />
+        <TrustBar />
+        <MiniQuiz />
+        <ServicesGrid />
+        <PriceCalculator />
+        <ShippingMarkAlert />
+        <EntrepotChine />
+        <HowItWorks />
+        <PriceTables />
+        <DDPCalculator />
+        <StatsCounter />
+        <PaiementSection />
+        <AboutSection />
+        <Testimonials />
+        <DropshippingSection />
+        <SourcingVilles />
+        <CatalogueSection />
+        <ComparatifSection />
+        <ZonesLivraison />
+        <GalerieSection />
+        <BlogTeaser />
+        <TrackingSection />
+        <FAQ />
+        <FAQExtra />
+        <ContactForm />
+        <NewsletterSection />
+        <CTAFinal />
+      </main>
+      <Footer />
+      <WhatsAppWidget />
+      <CookieBanner />
+      <LegalModals />
+      <ScrollToTop />
+      <SplashScreen />
+    </React.Fragment>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BF2B TRADING — Brochure PDF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0A1F44;
+      --navy2: #152A5C;
+      --gold: #F4C430;
+      --gold2: #D4A017;
+      --cream: #F8F6F0;
+      --green: #16A34A;
+      --red: #DC2626;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: white;
+      color: #333;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 14mm 14mm;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+    }
+    .page:last-child { page-break-after: avoid; break-after: avoid; }
+
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+      body { background: white; }
+      .page { margin: 0; width: 100%; }
+    }
+
+    /* ── Typography ─────────────────────────── */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Utilities ──────────────────────────── */
+    .navy-bg { background: var(--navy); color: white; }
+    .gold-bg { background: var(--gold); color: var(--navy); }
+    .cream-bg { background: var(--cream); color: var(--navy); }
+    .dark-bg { background: #070F22; color: white; }
+
+    .badge {
+      display: inline-block;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(244,196,48,0.15);
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .badge.dark { background: rgba(10,31,68,0.08); color: var(--navy); }
+
+    .dots {
+      background-image: radial-gradient(circle, rgba(244,196,48,0.3) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* ── Page 1 — Cover ─────────────────────── */
+    .cover {
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0;
+      padding: 20mm;
+    }
+    .cover .logo { width: 90px; height: 90px; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 0 20px rgba(244,196,48,0.4)); }
+    .cover h1 { font-size: 42px; font-weight: 900; color: white; line-height: 1; letter-spacing: -1px; }
+    .cover h1 span { color: var(--gold); }
+    .cover .sub { color: rgba(244,196,48,0.7); font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; margin-top: 8px; margin-bottom: 24px; }
+    .cover .tagline { color: rgba(255,255,255,0.6); font-size: 14px; font-style: italic; max-width: 320px; line-height: 1.6; margin-bottom: 32px; }
+    .cover .route {
+      background: rgba(244,196,48,0.1);
+      border: 1px solid rgba(244,196,48,0.3);
+      border-radius: 16px;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .cover .route span { color: var(--gold); }
+    .cover .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .cover .stat-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+    .cover .stat-val { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--gold); }
+    .cover .stat-lbl { font-size: 8px; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 0.05em; }
+    .cover .footer-bar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--gold);
+      padding: 8px 20mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ── Page 2 — Services ──────────────────── */
+    .section-header { margin-bottom: 16px; }
+    .section-header h2 { font-size: 26px; font-weight: 900; line-height: 1.1; color: var(--navy); }
+    .section-header h2 span { color: var(--gold2); }
+    .section-header p { color: #666; font-size: 11px; margin-top: 5px; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .service-card {
+      background: white;
+      border: 1.5px solid rgba(10,31,68,0.08);
+      border-radius: 14px;
+      padding: 14px;
+      position: relative;
+    }
+    .service-card .card-badge {
+      position: absolute;
+      top: -9px; right: 10px;
+      background: var(--navy);
+      color: var(--gold);
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+    }
+    .service-card h3 { font-size: 14px; font-weight: 800; color: var(--navy); margin-bottom: 3px; font-family: 'DM Sans', sans-serif; }
+    .service-card .price { color: var(--gold2); font-weight: 900; font-size: 12px; }
+    .service-card .delay { color: #666; font-size: 10px; margin-bottom: 8px; }
+    .service-card ul { list-style: none; }
+    .service-card ul li { font-size: 10px; color: #444; padding: 2px 0; padding-left: 12px; position: relative; }
+    .service-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+
+    /* ── Shipping Mark ───────────────────────── */
+    .shipping-box {
+      background: var(--navy);
+      border: 3px solid var(--red);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .shipping-box .red-bar {
+      background: var(--red);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shipping-box .red-bar span { color: white; font-weight: 900; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+    .shipping-box .inner { padding: 16px; display: flex; gap: 16px; align-items: center; }
+    .code-big { font-family: 'JetBrains Mono', monospace; font-weight: 900; font-size: 28px; color: var(--gold); letter-spacing: 0.08em; text-shadow: 0 0 20px rgba(244,196,48,0.4); }
+    .code-variants { display: flex; gap: 8px; margin-top: 6px; }
+    .code-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; color: rgba(244,196,48,0.7); background: rgba(244,196,48,0.1); border: 1px solid rgba(244,196,48,0.2); border-radius: 6px; padding: 3px 8px; }
+
+    /* ── Tarifs ─────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; font-size: 10px; }
+    thead tr { background: var(--navy); }
+    thead th { color: rgba(255,255,255,0.6); font-weight: 700; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 10px; text-align: left; }
+    tbody tr { border-bottom: 1px solid rgba(10,31,68,0.06); }
+    tbody tr:nth-child(even) { background: rgba(248,246,240,0.6); }
+    tbody td { padding: 7px 10px; color: #444; }
+    tbody td.best { font-weight: 900; color: var(--navy); }
+    tbody td.price { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--gold2); }
+    .best-badge { background: var(--gold); color: var(--navy); font-size: 7px; font-weight: 900; padding: 1px 6px; border-radius: 100px; margin-left: 5px; }
+
+    /* ── How It Works ───────────────────────── */
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 10px; }
+    .step { text-align: center; position: relative; }
+    .step-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--navy2); border: 2px solid rgba(244,196,48,0.3); display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 6px; position: relative; }
+    .step-num { position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: var(--gold); color: var(--navy); font-size: 8px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+    .step h4 { font-size: 9px; font-weight: 700; color: white; line-height: 1.3; font-family: 'DM Sans', sans-serif; }
+    .step p { font-size: 8px; color: rgba(255,255,255,0.4); margin-top: 3px; line-height: 1.4; }
+
+    /* ── Paiement ───────────────────────────── */
+    .pay-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+    .pay-card { border-radius: 12px; padding: 12px 8px; text-align: center; border: 1.5px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); }
+    .pay-card img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; margin: 0 auto 6px; display: block; background: white; padding: 4px; }
+    .pay-card .pay-name { font-weight: 700; font-size: 10px; color: white; }
+    .pay-card .pay-badge { font-size: 8px; font-weight: 800; padding: 2px 6px; border-radius: 100px; margin-bottom: 4px; display: inline-block; }
+
+    .ratio-box { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .ratio-item { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; text-align: center; }
+    .ratio-pct { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 36px; color: var(--gold); line-height: 1; }
+    .ratio-lbl { font-weight: 700; font-size: 11px; color: white; margin-top: 4px; }
+    .ratio-sub { font-size: 9px; color: rgba(255,255,255,0.4); margin-top: 2px; line-height: 1.4; }
+
+    /* ── Comparatif ─────────────────────────── */
+    .comp-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+    .comp-table thead tr { background: var(--navy2); }
+    .comp-table thead th { padding: 8px 10px; color: rgba(255,255,255,0.5); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .comp-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .comp-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .comp-table tbody td { padding: 6px 10px; color: rgba(255,255,255,0.6); font-size: 10px; }
+    .check { color: #16A34A; font-weight: 900; }
+    .cross { color: #EF4444; font-weight: 900; }
+    .unk { color: var(--gold); font-weight: 900; }
+
+    /* ── Contact ─────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 10px; }
+    .contact-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(244,196,48,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-label { font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+    .contact-val { font-size: 12px; font-weight: 700; color: white; margin-top: 2px; }
+    .contact-val a { color: var(--gold); text-decoration: none; }
+
+    .qr-placeholder { width: 100px; height: 100px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 8px; }
+    .qr-placeholder svg { width: 80px; height: 80px; }
+
+    /* ── Zones ───────────────────────────────── */
+    .zones-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; font-size: 10px; }
+    .zone-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 10px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+    .zone-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-right: 6px; }
+    .zone-city { font-weight: 700; color: rgba(255,255,255,0.8); font-size: 10px; }
+    .zone-price { font-weight: 800; font-size: 9px; }
+    .included { color: #16A34A; }
+    .ondemand { color: var(--gold2); }
+
+    /* ── FAQ ─────────────────────────────────── */
+    .faq-item { border-bottom: 1px solid rgba(10,31,68,0.06); padding: 8px 0; }
+    .faq-q { font-weight: 700; font-size: 11px; color: var(--navy); margin-bottom: 3px; }
+    .faq-a { font-size: 10px; color: #555; line-height: 1.5; }
+
+    /* ── Watermark corner ───────────────────── */
+    .page-num {
+      position: absolute;
+      bottom: 8mm;
+      right: 14mm;
+      font-size: 8px;
+      color: rgba(0,0,0,0.2);
+      font-weight: 600;
+    }
+    .page-num.light { color: rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — COUVERTURE
+═══════════════════════════════════════════ -->
+<div class="page cover dots">
+  <img src="logo.png" class="logo" alt="BF2B TRADING" />
+  <h1>BF<span>2</span>B TRADING</h1>
+  <div class="sub">TRANS · SUARL · Mbour, Sénégal</div>
+  <div class="tagline">Votre transitaire de confiance pour importer de Chine au Sénégal. Aérien, maritime, sourcing et dropshipping.</div>
+
+  <div class="route">
+    🇨🇳 CHINE <span>→→→</span> SÉNÉGAL 🇸🇳
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-val">100+</div><div class="stat-lbl">Clients</div></div>
+    <div class="stat-box"><div class="stat-val">10j</div><div class="stat-lbl">Aérien</div></div>
+    <div class="stat-box"><div class="stat-val">70j</div><div class="stat-lbl">Maritime</div></div>
+    <div class="stat-box"><div class="stat-val">24/7</div><div class="stat-lbl">Support</div></div>
+  </div>
+
+  <div class="footer-bar">
+    <span>bf2btrading@gmail.com</span>
+    <span>+221 75 202 65 77</span>
+    <span>NINEA : 011251965</span>
+    <span>RCCM : SN.MBR.2024.A.1532</span>
+  </div>
+  <div class="page-num light">1 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — SERVICES + CODE COLIS
+═══════════════════════════════════════════ -->
+<div class="page cream-bg">
+  <div class="badge dark">Nos Services</div>
+  <div class="section-header">
+    <h2>Expédition Chine → Sénégal<br/><span>dans les meilleures conditions</span></h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="card-badge">Le plus rapide</div>
+      <h3>✈ Fret Aérien Express</h3>
+      <div class="price">À partir de 9 800 FCFA/kg</div>
+      <div class="delay">⏱ 10–12 jours · Min. 2 kg</div>
+      <ul>
+        <li>Départ chaque mercredi</li>
+        <li>Code : DKR26072 +Air</li>
+        <li>Cut-off mardi soir</li>
+        <li>Marchandises générales & sensibles</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="card-badge">Meilleur prix</div>
+      <h3>🚢 Maritime LCL</h3>
+      <div class="price">À partir de 250 000 FCFA/CBM</div>
+      <div class="delay">⏱ 70–80 jours · Min. 0,5 CBM</div>
+      <ul>
+        <li>Départs tous les 2 jours</li>
+        <li>Code : DKR26072 +Sea</li>
+        <li>Foshan Logistics</li>
+        <li>LCL et FCL disponibles</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="card-badge">Grand volume</div>
+      <h3>📦 Conteneur FCL</h3>
+      <div class="price">20' dès 2 700 000 FCFA</div>
+      <div class="delay">⏱ 50–60 jours · Sur devis</div>
+      <ul>
+        <li>Conteneur 20' et 40' HC</li>
+        <li>40' HC dès 3 800 000 FCFA</li>
+        <li>Idéal grossistes & PME</li>
+        <li>Devis personnalisé</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="card-badge">Clé en main</div>
+      <h3>🔍 Sourcing & Dropshipping</h3>
+      <div class="price">Commission 5–10%</div>
+      <div class="delay">⏱ Variable · Yiwu · Foshan · Shenzhen</div>
+      <ul>
+        <li>Vérification fournisseur</li>
+        <li>Contrôle qualité</li>
+        <li>Dropshipping sans stock</li>
+        <li>1688 / Alibaba / Taobao</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Shipping Mark -->
+  <div class="shipping-box" style="margin-top:14px;">
+    <div class="red-bar">
+      <span>⚠ Code Colis Obligatoire — À donner à votre fournisseur</span>
+    </div>
+    <div class="inner">
+      <div style="flex:1">
+        <div style="color:rgba(255,255,255,0.5);font-size:9px;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:4px;">Votre code colis BF2B</div>
+        <div class="code-big">DKR26072</div>
+        <div class="code-variants">
+          <div class="code-tag">+Sea (Maritime)</div>
+          <div class="code-tag">+Air (Aérien)</div>
+        </div>
+      </div>
+      <div style="flex:1;color:rgba(255,255,255,0.5);font-size:10px;line-height:1.6;">
+        Sans ce code inscrit sur chaque colis, votre marchandise <strong style="color:#fff;">sera refusée ou perdue</strong> à l'entrepôt en Chine. Donnez-le à votre fournisseur avant expédition.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">2 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 3 — GRILLE TARIFAIRE
+═══════════════════════════════════════════ -->
+<div class="page" style="background:white;">
+  <div class="badge dark">Grille Tarifaire 2026</div>
+  <div class="section-header">
+    <h2>Tarifs <span>transparents</span></h2>
+    <p>Prix fixes, pas de mauvaises surprises. Dédouanement inclus dans tous nos tarifs.</p>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <h3 style="font-size:13px;color:var(--navy);margin-bottom:8px;font-family:'DM Sans';font-weight:800;">✈ FRET AÉRIEN — Départ chaque mercredi</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Tranche de poids</th>
+          <th>Prix BF2B (Général)</th>
+          <th>Prix BF2B (Sensible)</th>
+          <th>Délai</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2 – 10 kg</td><td class="price">10 800 FCFA/kg</td><td class="price">11 000 FCFA/kg</td><td>10–12 jours</td></tr>
+        <tr><td>10 – 50 kg</td><td class="price">10 200 FCFA/kg</td><td class="price">10 400 FCFA/kg</td><td>10–12 jours</td></tr>
+        <tr><td>50 – 200 kg</td><td class="price">10 000 FCFA/kg</td><td class="price">10 200 FCFA/kg</td><td>10–12 jours</td></tr>
+        <tr><td class="best">+200 kg <span class="best-badge">MEILLEUR PRIX</span></td><td class="price">9 800 FCFA/kg</td><td class="price">10 000 FCFA/kg</td><td>10–12 jours</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <h3 style="font-size:13px;color:var(--navy);margin-bottom:8px;font-family:'DM Sans';font-weight:800;">🚢 MARITIME LCL — Départ tous les 2 jours</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Volume</th>
+          <th>Prix BF2B (Général)</th>
+          <th>Prix BF2B (Sensible/Lourd)</th>
+          <th>Délai</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>0,5 – 1 CBM</td><td class="price">265 000 FCFA/CBM</td><td class="price">275 000 FCFA/CBM</td><td>70–80 jours</td></tr>
+        <tr><td>1 – 20 CBM</td><td class="price">255 000 FCFA/CBM</td><td class="price">265 000 FCFA/CBM</td><td>70–80 jours</td></tr>
+        <tr><td class="best">+20 CBM <span class="best-badge">MEILLEUR PRIX</span></td><td class="price">250 000 FCFA/CBM</td><td class="price">260 000 FCFA/CBM</td><td>70–80 jours</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:9px;color:#888;margin-top:6px;">Règle : 1 CBM = 500 kg. Sensible = batteries, liquides, électronique, cosmétiques.</p>
+  </div>
+
+  <div>
+    <h3 style="font-size:13px;color:var(--navy);margin-bottom:8px;font-family:'DM Sans';font-weight:800;">📦 CONTENEUR FCL</h3>
+    <table>
+      <thead><tr><th>Type de conteneur</th><th>Prix BF2B</th><th>Délai</th><th>Capacité</th></tr></thead>
+      <tbody>
+        <tr><td>20' Standard</td><td class="price">2 700 000 FCFA</td><td>50–60 jours</td><td>~28 CBM</td></tr>
+        <tr><td>40' High Cube</td><td class="price">3 800 000 FCFA</td><td>50–60 jours</td><td>~76 CBM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:14px;background:rgba(244,196,48,0.08);border:1.5px solid rgba(212,160,23,0.3);border-radius:12px;padding:10px 14px;">
+    <p style="font-size:10px;color:#444;line-height:1.6;">
+      <strong style="color:var(--navy);">💡 Comparatif marché :</strong> Les tarifs BF2B sont 10 à 18% inférieurs aux tarifs moyens du marché sénégalais.
+      Exemple : aérien 30 kg → marché ~12 800 FCFA/kg vs <strong>BF2B : 10 200 FCFA/kg</strong>. Économie : <strong>2 600 FCFA/kg soit 78 000 FCFA sur 30 kg.</strong>
+    </p>
+  </div>
+
+  <div class="page-num">3 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 4 — COMMENT ÇA MARCHE + PAIEMENT
+═══════════════════════════════════════════ -->
+<div class="page navy-bg dots">
+  <div class="badge">Process</div>
+  <div class="section-header">
+    <h2 style="color:white;">Comment ça <span style="color:var(--gold)">marche ?</span></h2>
+    <p style="color:rgba(255,255,255,0.4)">5 étapes simples pour recevoir vos marchandises de Chine.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-circle">🛒<div class="step-num">01</div></div>
+      <h4>Commande en Chine</h4>
+      <p>Alibaba, 1688, Taobao ou via notre sourcing</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">📋<div class="step-num">02</div></div>
+      <h4>Donnez notre code</h4>
+      <p>DKR26072 +Sea ou +Air à votre fournisseur</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">🏭<div class="step-num">03</div></div>
+      <h4>Réception Chine</h4>
+      <p>Notre entrepôt partenaire réceptionne & vérifie</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">✈<div class="step-num">04</div></div>
+      <h4>Expédition Dakar</h4>
+      <p>Avion (mercredi) ou navire (tous les 2 jours)</p>
+    </div>
+    <div class="step">
+      <div class="step-circle">📍<div class="step-num">05</div></div>
+      <h4>Livraison Sénégal</h4>
+      <p>Dédouanement inclus · Dakar & Mbour</p>
+    </div>
+  </div>
+
+  <!-- Séparateur -->
+  <div style="border-top:1px solid rgba(255,255,255,0.1);margin:18px 0;"></div>
+
+  <div class="badge">Paiement</div>
+  <div class="section-header">
+    <h2 style="color:white;">Comment <span style="color:var(--gold)">payer ?</span></h2>
+  </div>
+
+  <!-- Règle 70/30 -->
+  <div style="background:var(--gold);border-radius:14px;padding:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:center;margin-bottom:12px;">
+    <div>
+      <div style="font-size:9px;font-weight:800;color:rgba(10,31,68,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">Règle BF2B</div>
+      <div style="font-family:'Playfair Display';font-size:20px;font-weight:900;color:var(--navy);">Système 70/30</div>
+      <p style="font-size:10px;color:rgba(10,31,68,0.6);margin-top:4px;">Simple, transparent, sécurisé</p>
+    </div>
+    <div style="background:var(--navy);border-radius:12px;padding:12px;text-align:center;">
+      <div style="font-family:'Playfair Display';font-size:30px;font-weight:900;color:var(--gold);">70%</div>
+      <div style="font-size:10px;font-weight:700;color:white;">À la confirmation</div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.4);margin-top:2px;">Avant expédition</div>
+    </div>
+    <div style="background:rgba(10,31,68,0.7);border-radius:12px;padding:12px;text-align:center;">
+      <div style="font-family:'Playfair Display';font-size:30px;font-weight:900;color:rgba(244,196,48,0.7);">30%</div>
+      <div style="font-size:10px;font-weight:700;color:white;">À la livraison</div>
+      <div style="font-size:8px;color:rgba(255,255,255,0.4);margin-top:2px;">Réception Dakar/Mbour</div>
+    </div>
+  </div>
+
+  <div class="pay-grid">
+    <div class="pay-card">
+      <img src="wave-logo.png" alt="Wave" />
+      <div class="pay-badge" style="background:rgba(27,117,188,0.2);color:#60a5fa;">Recommandé</div>
+      <div class="pay-name">Wave</div>
+    </div>
+    <div class="pay-card">
+      <img src="orange-money.png" alt="Orange Money" />
+      <div class="pay-badge" style="background:rgba(255,102,0,0.2);color:#fb923c;">Populaire</div>
+      <div class="pay-name">Orange Money</div>
+    </div>
+    <div class="pay-card">
+      <div style="font-size:28px;margin-bottom:6px;">🏦</div>
+      <div class="pay-badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">Entreprises</div>
+      <div class="pay-name">Virement</div>
+    </div>
+    <div class="pay-card">
+      <div style="font-size:28px;margin-bottom:6px;">💵</div>
+      <div class="pay-badge" style="background:rgba(244,196,48,0.1);color:var(--gold);">Sur place</div>
+      <div class="pay-name">Espèces</div>
+    </div>
+  </div>
+
+  <div class="page-num light">4 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 5 — COMPARATIF + ZONES LIVRAISON
+═══════════════════════════════════════════ -->
+<div class="page dark-bg">
+  <div class="badge">Comparatif & Fiabilité</div>
+  <div class="section-header">
+    <h2 style="color:white;font-size:22px;">Pourquoi BF2B est <span style="color:var(--gold)">moins cher et plus fiable ?</span></h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+    <!-- Prix comparatif -->
+    <div>
+      <h4 style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Prix marché vs BF2B</h4>
+      <table class="comp-table" style="font-size:9px;">
+        <thead><tr><th>Service</th><th>Marché*</th><th style="color:var(--gold)">BF2B</th><th style="color:#16A34A">Éco.</th></tr></thead>
+        <tbody>
+          <tr><td>Aérien 30 kg</td><td style="text-decoration:line-through;color:rgba(255,255,255,0.3)">12 800</td><td style="color:var(--gold);font-weight:800;font-family:'JetBrains Mono'">10 200</td><td class="check">-20%</td></tr>
+          <tr><td>Aérien 100 kg</td><td style="text-decoration:line-through;color:rgba(255,255,255,0.3)">12 000</td><td style="color:var(--gold);font-weight:800;font-family:'JetBrains Mono'">10 000</td><td class="check">-17%</td></tr>
+          <tr><td>Maritime 2 CBM</td><td style="text-decoration:line-through;color:rgba(255,255,255,0.3)">290 000</td><td style="color:var(--gold);font-weight:800;font-family:'JetBrains Mono'">255 000</td><td class="check">-12%</td></tr>
+          <tr><td>Maritime 10 CBM</td><td style="text-decoration:line-through;color:rgba(255,255,255,0.3)">275 000</td><td style="color:var(--gold);font-weight:800;font-family:'JetBrains Mono'">255 000</td><td class="check">-7%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:5px;">* Tarifs moyens du marché sénégalais, à titre indicatif. FCFA/kg ou FCFA/CBM.</p>
+    </div>
+
+    <!-- Avantages BF2B -->
+    <div>
+      <h4 style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">Avantages exclusifs BF2B</h4>
+      <div style="space-y:4px;">
+        {['✅ Départ aérien garanti chaque mercredi','✅ Maritime tous les 2 jours','✅ Code colis unique DKR26072','✅ Dédouanement inclus dans le prix','✅ Calculateur DDP en ligne','✅ WhatsApp 24h/24 — réponse 2h','✅ Paiement flexible 70/30','✅ Sourcing direct en Chine','✅ Prix transparents affichés','✅ Dropshipping sans stock'].map(item => `<div style="font-size:9.5px;color:rgba(255,255,255,0.65);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);">${item}</div>`).join('')}
+      </div>
+    </div>
+  </div>
+
+  <!-- Zones de livraison -->
+  <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:14px;">
+    <div class="badge">Zones de livraison</div>
+    <h3 style="font-size:14px;font-weight:900;color:white;margin-bottom:10px;font-family:'Playfair Display'">Livraison <span style="color:var(--gold)">partout au Sénégal</span></h3>
+    <div class="zones-grid">
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:#16A34A"></div><span class="zone-city">Dakar</span></div><span class="zone-price included">Inclus</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:#16A34A"></div><span class="zone-city">Mbour ★</span></div><span class="zone-price included">Inclus</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:var(--gold)"></div><span class="zone-city">Thiès</span></div><span class="zone-price ondemand">5 000–8 000 F</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:var(--gold)"></div><span class="zone-city">Kaolack</span></div><span class="zone-price ondemand">10 000–15 000 F</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:var(--gold)"></div><span class="zone-city">Saint-Louis</span></div><span class="zone-price ondemand">15 000–20 000 F</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:var(--gold)"></div><span class="zone-city">Touba / Mbacké</span></div><span class="zone-price ondemand">8 000–12 000 F</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:rgba(255,255,255,0.3)"></div><span class="zone-city">Ziguinchor</span></div><span class="zone-price" style="color:rgba(255,255,255,0.4)">Sur devis</span></div>
+      <div class="zone-row"><div style="display:flex;align-items:center"><div class="zone-dot" style="background:rgba(255,255,255,0.3)"></div><span class="zone-city">Autres villes</span></div><span class="zone-price" style="color:rgba(255,255,255,0.4)">Sur devis</span></div>
+    </div>
+  </div>
+
+  <div class="page-num light">5 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 6 — FAQ + SOURCING VILLES
+═══════════════════════════════════════════ -->
+<div class="page cream-bg">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <!-- FAQ -->
+    <div>
+      <div class="badge dark">FAQ</div>
+      <h2 style="font-size:18px;color:var(--navy);margin-bottom:12px;">Questions <span style="color:var(--gold2)">fréquentes</span></h2>
+      <div class="faq-item">
+        <div class="faq-q">Quel est le minimum de commande ?</div>
+        <div class="faq-a">Aérien : 2 kg. Maritime : 0,5 CBM. Règle : 1 CBM = 500 kg.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Le dédouanement est-il inclus ?</div>
+        <div class="faq-a">Oui, inclus. Les droits de douane et TVA (30–45%) sont à votre charge.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment payer ?</div>
+        <div class="faq-a">70% à la commande, 30% à la livraison. Wave, Orange Money, virement, espèces.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Puis-je faire du dropshipping ?</div>
+        <div class="faq-a">Oui ! Commission 5–10%. Vous vendez, BF2B expédie directement chez votre client.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Livraison partout au Sénégal ?</div>
+        <div class="faq-a">Dakar et Mbour inclus. Autres villes sur devis selon distance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Que sont les marchandises sensibles ?</div>
+        <div class="faq-a">Batteries, liquides, cosmétiques, parfums, électronique de valeur. Tarif +200 FCFA/kg.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Comment démarrer ?</div>
+        <div class="faq-a">Contactez-nous sur WhatsApp. Devis gratuit en moins de 2h.</div>
+      </div>
+    </div>
+
+    <!-- Sourcing villes -->
+    <div>
+      <div class="badge dark">Sourcing Chine</div>
+      <h2 style="font-size:18px;color:var(--navy);margin-bottom:12px;">Meilleures villes <span style="color:var(--gold2)">par catégorie</span></h2>
+      <div style="space-y:8px;">
+        <div style="background:var(--navy);border-radius:12px;padding:12px;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:20px;">👗</span>
+            <div>
+              <div style="font-weight:900;font-size:13px;color:var(--gold)">Yiwu</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.4)">Textile, accessoires, jouets, articles ménagers</div>
+            </div>
+          </div>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5)">Plus grand marché de gros au monde. Prix usine imbattables. Idéal commerçants mode.</p>
+        </div>
+        <div style="background:var(--navy);border-radius:12px;padding:12px;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:20px;">📱</span>
+            <div>
+              <div style="font-weight:900;font-size:13px;color:var(--gold)">Shenzhen</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.4)">Électronique, smartphones, LED, batteries</div>
+            </div>
+          </div>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5)">Capitale mondiale de l'électronique. Tous composants disponibles.</p>
+        </div>
+        <div style="background:var(--navy);border-radius:12px;padding:12px;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:20px;">💄</span>
+            <div>
+              <div style="font-weight:900;font-size:13px;color:var(--gold)">Guangzhou</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.4)">Cosmétiques, mode, chaussures, maroquinerie</div>
+            </div>
+          </div>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5)">Capital de la mode et cosmétiques en Chine.</p>
+        </div>
+        <div style="background:var(--navy);border-radius:12px;padding:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:20px;">🪑</span>
+            <div>
+              <div style="font-weight:900;font-size:13px;color:var(--gold)">Foshan</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.4)">Mobilier, électroménager, céramique</div>
+            </div>
+          </div>
+          <p style="font-size:9px;color:rgba(255,255,255,0.5)">Leader mondial du mobilier et de la céramique.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">6 / 7</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE 7 — CONTACT + À PROPOS
+═══════════════════════════════════════════ -->
+<div class="page navy-bg dots">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;height:100%;">
+
+    <!-- À propos -->
+    <div>
+      <div class="badge">À propos</div>
+      <h2 style="color:white;font-size:20px;margin-bottom:10px;">BF2B TRADING <span style="color:var(--gold)">SUARL</span></h2>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:14px;margin-bottom:12px;text-align:center;">
+        <img src="logo.png" alt="BF2B" style="width:60px;height:60px;object-fit:contain;margin:0 auto 8px;display:block;" />
+        <div style="font-family:'Playfair Display';font-weight:900;font-size:16px;color:white;">Khady <span style="color:var(--gold)">BA</span></div>
+        <div style="color:rgba(244,196,48,0.6);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-top:3px;">Gérante & Fondatrice</div>
+      </div>
+      <p style="font-size:10px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:12px;">Fondée en 2015 à Mbour par Khady BA, BF2B TRADING TRANS s'est fixé une mission claire : rendre le commerce Chine–Sénégal accessible, transparent et fiable pour tous les commerçants sénégalais.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;">Fondée</div>
+          <div style="font-family:'JetBrains Mono';font-weight:900;color:var(--gold);font-size:16px;margin-top:2px;">2015</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;">Siège</div>
+          <div style="font-family:'JetBrains Mono';font-weight:900;color:var(--gold);font-size:12px;margin-top:2px;">Mbour SN</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;">NINEA</div>
+          <div style="font-family:'JetBrains Mono';font-weight:900;color:var(--gold);font-size:11px;margin-top:2px;">011251965</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:8px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.1em;">RCCM</div>
+          <div style="font-family:'JetBrains Mono';font-weight:900;color:var(--gold);font-size:9px;margin-top:2px;">2024.A.1532</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <div class="badge">Contact</div>
+      <h2 style="color:white;font-size:20px;margin-bottom:14px;">Contactez-nous <span style="color:var(--gold)">maintenant</span></h2>
+
+      <div style="space-y:10px;">
+        <div class="contact-item" style="margin-bottom:12px;">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">WhatsApp (24h/24)</div>
+            <div class="contact-val">+221 75 202 65 77</div>
+          </div>
+        </div>
+        <div class="contact-item" style="margin-bottom:12px;">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:bf2btrading@gmail.com">bf2btrading@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item" style="margin-bottom:12px;">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Localisation</div>
+            <div class="contact-val">Mbour, Sénégal 🇸🇳</div>
+          </div>
+        </div>
+        <div class="contact-item" style="margin-bottom:16px;">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Horaires</div>
+            <div class="contact-val" style="font-size:11px;">Lun–Ven 08h–20h · Sam 09h–18h</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA box -->
+      <div style="background:var(--gold);border-radius:14px;padding:16px;text-align:center;">
+        <div style="font-family:'Playfair Display';font-weight:900;font-size:16px;color:var(--navy);margin-bottom:6px;">Devis gratuit en 2h !</div>
+        <div style="font-size:10px;color:rgba(10,31,68,0.6);margin-bottom:10px;">Envoyez-nous votre demande sur WhatsApp. Réponse garantie.</div>
+        <div style="background:var(--navy);border-radius:10px;padding:10px;font-family:'JetBrains Mono';font-weight:900;font-size:18px;color:var(--gold);letter-spacing:0.05em;">
+          +221 75 202 65 77
+        </div>
+      </div>
+
+      <!-- Code rappel -->
+      <div style="margin-top:12px;background:rgba(220,38,38,0.1);border:1.5px solid rgba(220,38,38,0.3);border-radius:12px;padding:10px;text-align:center;">
+        <div style="font-size:9px;color:rgba(220,38,38,0.8);font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px;">⚠ N'oubliez pas votre code colis</div>
+        <div style="font-family:'JetBrains Mono';font-weight:900;font-size:18px;color:var(--gold);letter-spacing:0.1em;">DKR26072</div>
+        <div style="display:flex;gap:6px;justify-content:center;margin-top:5px;">
+          <span style="font-family:'JetBrains Mono';font-size:10px;color:rgba(244,196,48,0.6);background:rgba(244,196,48,0.1);padding:2px 8px;border-radius:6px;">+Sea</span>
+          <span style="font-family:'JetBrains Mono';font-size:10px;color:rgba(244,196,48,0.6);background:rgba(244,196,48,0.1);padding:2px 8px;border-radius:6px;">+Air</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num light">7 / 7</div>
+</div>
+
+<script>
+  // Auto-print after fonts + layout settle
+  document.fonts.ready.then(() => {
+    setTimeout(() => window.print(), 800);
+  });
+</script>
+</body>
+</html>

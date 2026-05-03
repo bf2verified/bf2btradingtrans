@@ -1,0 +1,27 @@
+{
+  "name": "bf2btrading-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site web officiel BF2B TRADING SUARL — Transitaire Chine-Sénégal (Mbour, Sénégal)",
+  "homepage": "https://www.bf2btradingtrans.com",
+  "author": {
+    "name": "BF2B TRADING SUARL",
+    "email": "bf2btrading@gmail.com",
+    "url": "https://www.bf2btradingtrans.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "transitaire",
+    "senegal",
+    "chine",
+    "fret-aerien",
+    "fret-maritime",
+    "dedouanement",
+    "import-export",
+    "mbour"
+  ],
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  }
+}
